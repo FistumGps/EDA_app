@@ -3,8 +3,23 @@ import pandas as pd
 import streamlit as st
 from pandas_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
+from streamlit_lottie import st_lottie
 
 st.set_page_config(page_title= "EDA Report Web App", page_icon=":bar_chart:" ,layout='wide')
+
+@st.cache
+#lottie Code
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+lottie_hello = load_lottieurl("https://assets8.lottiefiles.com/packages/lf20_49rdyysj.json")
+
+st_lottie = st_lottie(lottie_hello,
+          height = 100,
+          width = 400,key="eda")
 
 # Web App Title
 st.markdown('''
