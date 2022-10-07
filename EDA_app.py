@@ -1,12 +1,17 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
+import requests  
 from pandas_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
 from streamlit_lottie import st_lottie
 
 st.set_page_config(page_title= "EDA Report Web App", page_icon=":bar_chart:" ,layout='wide')
-
+# Web App Title
+st.markdown('''
+The EDA App Made By Fistum 
+---
+''')
 @st.cache
 #lottie Code
 def load_lottieurl(url: str):
@@ -18,14 +23,8 @@ def load_lottieurl(url: str):
 lottie_hello = load_lottieurl("https://assets8.lottiefiles.com/packages/lf20_49rdyysj.json")
 
 st_lottie = st_lottie(lottie_hello,
-          height = 100,
-          width = 400,key="eda")
-
-# Web App Title
-st.markdown('''
-The EDA App Made By Fistum
----
-''')
+          height = 200,
+          width = 600,key="eda")
 
 # Upload CSV data
 with st.sidebar.header('Upload your CSV data'):
@@ -40,10 +39,10 @@ if uploaded_file is not None:
         return csv
     df = load_csv()
     pr = ProfileReport(df, explorative=True)
-    st.header('**Input DataFrame**')
+    st.header('Input DataFrame')
     st.write(df)
     st.write('---')
-    st.header('*Pandas Profiling Report*')
+    st.header('Profiling Report')
     st_profile_report(pr)
 else:
     st.info('Awaiting for CSV file to be uploaded.')
@@ -58,8 +57,17 @@ else:
             return a
         df = load_data()
         pr = ProfileReport(df, explorative=True)
-        st.header('**Input DataFrame**')
+        st.header('Input DataFrame')
         st.write(df)
         st.write('---')
-        st.header('**Pandas Profiling Report**')
+        st.header('Profiling Report')
         st_profile_report(pr)
+
+hide_st_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    </style>
+    """
+st.markdown(hide_st_style, unsafe_allow_html=True)
