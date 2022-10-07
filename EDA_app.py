@@ -8,7 +8,7 @@ st.set_page_config(page_title= "EDA Report Web App", page_icon=":bar_chart:" ,la
 
 # Web App Title
 st.markdown('''
-*The EDA App Made By Fistum*
+The EDA App Made By Fistum
 ---
 ''')
 
