@@ -5,12 +5,10 @@ from pandas_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
 
 st.set_page_config(page_title= "EDA Report Web App", page_icon=":bar_chart:" ,layout='wide')
-#st.header("Twitter")
-@st.cache
 
 # Web App Title
 st.markdown('''
-# *The EDA App Made By Fistum*
+*The EDA App Made By Fistum*
 ---
 ''')
 
